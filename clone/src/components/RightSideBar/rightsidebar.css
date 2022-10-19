@@ -1,0 +1,58 @@
+.graphcontainer{
+    display: block;
+    position: relative;
+    width: 63%;
+    left: 4vh;
+  top: 1vh;
+}
+.graph-logo{
+    display: flex;
+    width: 100%;
+}
+.graph-logo img{
+    padding: 40px;
+    width: 380px;
+    height: 300px;
+}
+.img{
+    height: 1vh;
+}
+.nodata{
+    font-family: monospace;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}
+.ig {
+display: flex;
+flex-direction: column;
+margin: 4vh;
+margin-top: 9vh;
+margin-left: 3.5vw;
+}
+
+.index-select{
+    height: 4vh;
+    font-size: 2vh;
+    width: 14vw;
+    margin-bottom: 17vh;
+    text-align: center;
+}
+
+.plot-btn{
+        color: azure;
+        width: 100%;
+        height: 5vh;
+        background-color: #2984FF;
+        cursor: pointer;
+        border-radius: 0.6vh;
+        font-size: 18px;  
+    }
+    
+    .plot-btn:hover{
+        background-color: #1a72e4;
+        font-weight: bolder;
+    }

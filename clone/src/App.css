@@ -1,0 +1,17 @@
+*{
+  font-family : 'Roboto', sans-serif;
+}
+.body{
+  display: flex;
+  flex-direction: row;
+}
+.map{
+
+height: 44vh;
+width: 80vw;
+position: relative;
+}
+.leftsidebar{
+  height: 100vh;
+  background-color: #273037;
+}
