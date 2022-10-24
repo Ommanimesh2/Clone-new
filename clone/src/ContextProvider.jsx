@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import dataContext from './datacontext'
 const ContextProvider = (props) => {
-    const [globalData,setGlobalData]=useState([])
     const [param,setParam]=useState(0)
     const [ndvi,setNdvi]=useState([])
     const [dates,setDates]=useState([])
@@ -14,9 +13,17 @@ const ContextProvider = (props) => {
     const [satellite,setSatellite]=useState('')
     const [yAxis,setYAxis]=useState('')
     const [climVars,setClimVars]=useState([])
+    const [address,setAddress]=useState([])
+    const [allFarmerDetails,setAllFarmerDetails]=useState([])
+    const [cropHighlight,setCropHighlight]=useState([])
+    const [seasonHighlight,setSeasonHighlight]=useState([])
+    const [crop,setCrop]=useState('')
+    const [season,setSeason]=useState('')
+    const [addressQuery,setAddressQuery]=useState('roorkee')
+    
       return (
         <div>
-          <dataContext.Provider value={{climVars,setClimVars,yAxis,setYAxis,satellite,setSatellite,showGraphData,setShowGraphData,leftDet,setLeftDet,specDetails,setSpecDetails,pop,setPop,ndvi,setNdvi,dates,setDates,param,setParam,start,setStart,end,setEnd}} >
+          <dataContext.Provider value={{cropHighlight,setCropHighlight,seasonHighlight,setSeasonHighlight,crop,setCrop,season,setSeason,allFarmerDetails,setAllFarmerDetails,address,setAddress,addressQuery,setAddressQuery,climVars,setClimVars,yAxis,setYAxis,satellite,setSatellite,showGraphData,setShowGraphData,leftDet,setLeftDet,specDetails,setSpecDetails,pop,setPop,ndvi,setNdvi,dates,setDates,param,setParam,start,setStart,end,setEnd}} >
             {props.children}
           </dataContext.Provider>
         </div>

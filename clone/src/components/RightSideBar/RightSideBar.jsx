@@ -118,14 +118,14 @@ export default function RightSideBar() {
         if (obj[keys[i]] !== "" && keys[i] != 'id' && keys[i] != 'Geometry' && keys[i] != 'Area') {
           const sDate = new Date(start)
           const eDate = new Date(end)
-          
+
           const keyarr = keys[i].split('-')
           var temp = keyarr[0]
           keyarr[0] = keyarr[1]
           keyarr[1] = temp
           keyarr.join('-')
           const comp = new Date(keyarr)
-          console.log(comp);
+    //  if(comp != "Invalid Date"){}
           if (comp > sDate && comp < eDate) {
   
             dates1.push(keyarr);
@@ -146,7 +146,7 @@ export default function RightSideBar() {
       });
       var dates2=[];
       dates1.forEach((e)=>{
-    
+        console.log(e);
     
      
         if (e[0]=='01') dates2.push('Jan')
@@ -165,8 +165,7 @@ export default function RightSideBar() {
       })
       setNdvi(ndvi1)
       setDates(dates2)
-      console.log(ndvi);
-      console.log(dates);
+
   
     };
    
@@ -177,20 +176,21 @@ export default function RightSideBar() {
           const data = await fetch(`https://modis-ea7f2-default-rtdb.firebaseio.com/${param}.json`)
           const resp = await data.json();
           console.log(resp);
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
+          
           setYAxis('NDVI ')
         }
        else if(selectIndex=='Precipitation'){
           const data = await fetch(`https://precipitation-41e14-default-rtdb.firebaseio.com/${param}.json`)
           const resp = await data.json();
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('Precipitation')
-          // splitKeyValue(resp)
+          // resp ? splitKeyValue(resp):alert("no data found")
         }
        else if(selectIndex=='Temperature'){
           const data = await fetch(`https://temperature-51769-default-rtdb.firebaseio.com/${param}.json`)
           const resp = await data.json();
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('Temperature')
             
         }
@@ -201,14 +201,14 @@ export default function RightSideBar() {
         if(selectIndex=='EVI'){
           const inData=await fetch(`https://stable-glass-363410-default-rtdb.firebaseio.com/${param}.json`)
           const resp=await inData.json()
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           
           setYAxis('EVI ')
         }
         else if(selectIndex=='NDVI'){
           const inData=await fetch(`https://test-c1701-default-rtdb.firebaseio.com/${param}.json`)
           const resp=await inData.json()
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('NDVI ')
           
           
@@ -216,7 +216,7 @@ export default function RightSideBar() {
         else if(selectIndex=='GNDVI'){
           const inData=await fetch(`https://gndvi-de6c2-default-rtdb.firebaseio.com/${param}.json`)
           const resp=await inData.json()
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('GNDVI')
           
           
@@ -225,21 +225,21 @@ export default function RightSideBar() {
           
           const inData=await fetch(`https://ndre-11d99-default-rtdb.firebaseio.com/${param}.json`)
           const resp=await inData.json()
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('NDRE ')
-          // splitKeyValue(resp)
+          // resp ? splitKeyValue(resp):alert("no data found")
         }
         else if(selectIndex=='Precipitation'){
           const data = await fetch(`https://precipitation-41e14-default-rtdb.firebaseio.com/${param}.json`)
           const resp = await data.json();
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('Precipitation')
-          // splitKeyValue(resp)
+          // resp ? splitKeyValue(resp):alert("no data found")
         }
         else if(selectIndex=='Temperature'){
           const data = await fetch(`https://temperature-51769-default-rtdb.firebaseio.com/${param}.json`)
           const resp = await data.json();
-          splitKeyValue(resp)
+          resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('Temperature')
             
         }
