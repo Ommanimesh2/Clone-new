@@ -1,15 +1,13 @@
 import React, { useContext } from 'react'
 import dataContext from '../../datacontext'
 import './leftsidebar.css'
-import Hamburger from './Hamburger'
+import Hamburger from '../Hamburger/Hamburger'
 import { useState } from 'react'
 import { VscMenu } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
-import img from './logo1.svg'
-import image from './copyright.svg'
+import img from '../../Assets/logo1.svg'
+import image from '../../Assets/copyright.svg'
 import data from '../../roorData'
-import Popup from '../Popup/Popup'
-import { useEffect } from 'react'
 const LeftSideBar = () => {
 
   const [sideopen, setSideopen] = useState(false);

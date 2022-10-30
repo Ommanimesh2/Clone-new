@@ -2,7 +2,6 @@ import React from 'react'
 import "./rightsidebar.css"
 import { useState } from 'react'
 import dataContext from '../../datacontext';
-import space from './space.mp4'
 import { useContext } from 'react';
 import {
   Chart as ChartJS,
@@ -14,17 +13,11 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import img from './log.svg'
-
 import { Bar, Line } from 'react-chartjs-2';
-import { SwapHorizontalIcon } from 'evergreen-ui';
 export default function RightSideBar() {
-    const {ndvi,climVars,setClimVars,setNdvi,dates,yAxis,setYAxis,start,end,setSpecDetails,satellite,param,setDates,showGraphData,setShowGraphData}=useContext(dataContext)
-    const [cvar,setVar]=useState('')
-    const [newSetdata,setnewSetdata]=useState([])
+    const {ndvi,setNdvi,dates,yAxis,setYAxis,start,end,setSpecDetails,satellite,param,setDates}=useContext(dataContext)
     const [selectIndex,setSelectIndex]=useState('')
     ChartJS.register(
-      
         CategoryScale,
         LinearScale,
         PointElement,
@@ -33,7 +26,6 @@ export default function RightSideBar() {
         Tooltip,
         Legend
       );
-  
       const options = {
         responsive: true,
         scales: {
@@ -48,8 +40,7 @@ export default function RightSideBar() {
                 text:"DATES",
                 font: {
                     size: 21,
-                    //   weight: "bold"
-                },
+                      },
                 color: 'white'
             },
             
@@ -93,7 +84,6 @@ export default function RightSideBar() {
            
             legend: {
                 labels: {
-                    // This more specific font property overrides the global property
                     font: {
                         size: 23,
                         weight: "bold"
@@ -177,7 +167,6 @@ export default function RightSideBar() {
           const resp = await data.json();
           console.log(resp);
           resp ? splitKeyValue(resp):alert("no data found")
-          
           setYAxis('NDVI ')
         }
        else if(selectIndex=='Precipitation'){
