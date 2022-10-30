@@ -14,29 +14,37 @@ const LeftSideBar = () => {
 
   const [sideopen, setSideopen] = useState(false);
   const [showOnlyYearSelector, setShowOnlyYearSelector] = useState(false)
-  const { cropHighlight, setCropHighlight, seasonHighlight, setSeasonHighlight, allFarmerDetails, season, setSeason, crop, setCrop, ndvi, setAddressQuery, addressQuery, setAddress, setNdvi, setSatellite, leftDet, dates, setDates, param, setStart, start, end, setEnd, pop, setPop, setSpecDetails, specDetails } = useContext(dataContext)
+  const { cropHighlight, setCropHighlight, seasonHighlight, setSeasonHighlight, allFarmerDetails, season, setSeason, crop, setCrop, ndvi, setAddressQuery, addressQuery, setAddress, setNdvi, setSatellite, leftDet, dates, setDates, param, setParam, setStart, start, end, setEnd, pop, setPop, setSpecDetails, specDetails } = useContext(dataContext)
 
   const geocoderData = async (e) => {
     if (e.key === 'Enter') {
       const data = await fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${addressQuery}&apiKey=DBqoNTB1sP3HLJ9T5QDJgbPIv8lZA_0W1cG-Je0wJqo`)
       const resp = await data.json()
-      
       setAddress(resp)
       console.log('do validate')
     }
   }
- 
+  const specificDetails = async () => {
+    if(param!=-1){
+    const spData = await fetch(`https://new-ndvi-default-rtdb.firebaseio.com/${param}.json`)
+    const response = await spData.json()
+    setSpecDetails(response)
+  }
+}
  const openPopup = () => {
     console.log(specDetails)
     console.log(specDetails.Crop_Name);
-    if (specDetails.Crop_Name != undefined) {
-
+    if (param != -1) {
       setPop(true);
-    } else {
+      setParam(-1)
+    } 
+    
+    else {
       alert("Please select the required fields")
     }
 
   }
+  
   const sidemenu = () => {
     setSideopen(!sideopen);
   }
@@ -153,7 +161,10 @@ const LeftSideBar = () => {
 
             <div className="moreinfo">
 
-              <button className="info-btn" onClick={openPopup}>More Info</button>
+              <button className="info-btn" onClick={()=>{
+                specificDetails()
+                openPopup()
+                }}>More Info</button>
 
             </div>
             <div className="updateInfo">
@@ -176,16 +187,17 @@ const LeftSideBar = () => {
               </select>
               <select name="Crop-select" onChange={(e) => { handleCropSelection(e) }} className='Satellite-select' id="dropdown" placeholder='Select Satellite'>
                 <option className='select-options1' value="" disabled selected hidden>Select Crop</option>
-                <option className='select-options' value="linseed">linseed</option>
-                <option className='select-options' value="pulses">pulses</option>
-                <option className='select-options' value="rice">rice</option>
-                <option className='select-options' value="corn">corn</option>
-                <option className='select-options' value="maize">maize</option>
-                <option className='select-options' value="melon">melon</option>
-                <option className='select-options' value="soybean">soybean</option>
-                <option className='select-options' value="ragi">ragi</option>
-                <option className='select-options' value="tomatoes">tomatoes</option>
-                <option className='select-options' value="wheat">wheat</option>
+                {season==="Rabi"&&<option className='select-options' value="linseed">linseed</option>}
+                {season==="Rabi"&&<option className='select-options' value="pulses">pulses</option>}
+                {season==="Rabi"&&<option className='select-options' value="corn">corn</option>}
+                {season==="Kharif"&&<option className='select-options' value="pulses">pulses</option>}
+                {season==="Rabi"&&<option className='select-options' value="wheat">wheat</option>}
+                {season==="Kharif"&&<option className='select-options' value="rice">rice</option>}
+                {season==="Kharif"&&<option className='select-options' value="maize">maize</option>}
+                {season==="Kharif"&&<option className='select-options' value="soybean">soybean</option>}
+                {season==="Kharif"&&<option className='select-options' value="ragi">ragi</option>}
+                {season==="Zaid"&& <option className='select-options' value="tomatoes">tomatoes</option>}
+                {season==="Zaid"&& <option className='select-options' value="melon">melon</option>}
               </select>
               
 {!showOnlyYearSelector ?

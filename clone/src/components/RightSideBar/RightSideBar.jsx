@@ -104,11 +104,11 @@ export default function RightSideBar() {
     }
     
 
-    const specificDetails = async () => {
-      const spData = await fetch(`https://new-ndvi-default-rtdb.firebaseio.com/${param}.json`)
-      const response = await spData.json()
-      setSpecDetails(response)
-    }
+    // const specificDetails = async () => {
+    //   const spData = await fetch(`https://new-ndvi-default-rtdb.firebaseio.com/${param}.json`)
+    //   const response = await spData.json()
+    //   setSpecDetails(response)
+    // }
     const splitKeyValue = obj => {
       const keys = Object.keys(obj);
       console.log("object is " + keys);
@@ -276,7 +276,6 @@ export default function RightSideBar() {
               </select>
              <button className='plot-btn' onClick={()=>{
                   handleSentinel()
-                  specificDetails()
                   
                 }}>Plot</button>
 </div>: satellite=='MODIS'?<div className="ig">
@@ -289,7 +288,7 @@ export default function RightSideBar() {
               </select>
              <button className='plot-btn' onClick={()=>{
                handleModis()
-               specificDetails()
+               
         
              }}>Plot</button>
 </div> :<div className='nodata'><p>Select the Crop Field and the time series for data analysis</p></div>}
