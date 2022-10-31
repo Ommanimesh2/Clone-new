@@ -11,51 +11,6 @@ const Popup = () => {
     <div className="overlay"></div>
     
     <div className="modal-inner">
-            {/* <div className="overlay"></div>
-            <div className="modal-content">
-              Details
-              <VscChromeClose style={{height:"50px",width:"50px",position:"relative",top:"2vh",left:"150vh"}} onClick={()=>setPop(false)}/>
-              <div className="grid-container">
-                <div className="grid-items">
-                    <div className="head">Id</div>
-                    <div className="val">{specDetails.id}</div>
-                </div>
-                <div className="grid-items">
-                    <div className="head">Crop Name</div>
-                    <div className="val">{specDetails.Crop_Name}</div>
-                </div>
-                <div className="grid-items">
-                    <div className="head">Seed Type</div>
-                    <div className="val">{specDetails.Seed_Type}</div>
-                    
-                </div>
-                <div className="grid-items">
-                    <div className="head">Season</div>
-                    <div className="val">{specDetails.Season}</div>
-                    
-                </div>
-                <div className="grid-items">
-                    <div className="head">Sowing Date</div>
-                    <div className="val">{specDetails.Sowing_Date}</div>
-                    
-                </div>
-                <div className="grid-items">
-                    <div className="head">Harvesting Date</div>
-                    <div className="val">{specDetails.Harvesting_Date}</div>
-                    
-                </div>
-                <div className="grid-items">
-                    <div className="head">Farmer Name</div>
-                    <div className="val">{specDetails.Farmer_Name}</div>
-                    
-                </div>
-                <div className="grid-items">
-                    <div className="head">Crop Type</div>
-                    <div className="val">{specDetails.Crop_Type}</div>
-                    
-                </div>
-              </div>
-            </div> */}
              <div className="topbar">
                  <div style={{fontSize:"24px",fontWeight:"normal"}}>Details</div>
                  <VscChromeClose style={{height:"24px",width:"24px"}} onClick={()=>setPop(false)}/></div>

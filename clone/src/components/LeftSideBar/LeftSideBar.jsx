@@ -12,6 +12,9 @@ const LeftSideBar = () => {
 
   const [sideopen, setSideopen] = useState(false);
   const [showOnlyYearSelector, setShowOnlyYearSelector] = useState(false)
+  const [seasonSelected, setSeasonSelected] = useState("Select Season")
+  const [cropSelected, setCropSelected] = useState("Select Crop")
+  const [satelliteSelected, setSatelliteSelected] = useState("Select Satellite")
   const { cropHighlight, setCropHighlight, seasonHighlight, setSeasonHighlight, allFarmerDetails, season, setSeason, crop, setCrop, ndvi, setAddressQuery, addressQuery, setAddress, setNdvi, setSatellite, leftDet, dates, setDates, param, setParam, setStart, start, end, setEnd, pop, setPop, setSpecDetails, specDetails } = useContext(dataContext)
 
   const geocoderData = async (e) => {
@@ -168,34 +171,36 @@ const LeftSideBar = () => {
             <div className="updateInfo">
             <select name="Season-select" onChange={(e) => { 
                 handleSeasonSelection(e) 
-              
+                setSeasonSelected(e.target.value)
                 setShowOnlyYearSelector(true)
-                }} className='Satellite-select' id="dropdown" placeholder='Select Satellite'>
-                <option className='select-options1' value="" disabled selected hidden>Select Season</option>
-
-                
-                <option className='select-options' value="Rabi">Rabi</option>
-                <option className='select-options' value="Kharif">Kharif</option>
-                <option className='select-options' value="Zaid">Zaid</option>
+                }} className='Satellite-select' id="dropdown" value={seasonSelected} placeholder='Select Season'>
+                <option className='select-options1' value="Select Season" disabled selected hidden>Select Season</option>
+                <option className='select-options' onClick={(e)=>{setSeasonSelected(e.target.value)}} value="Rabi">Rabi</option>
+                <option className='select-options' onClick={(e)=>{setSeasonSelected(e.target.value)}} value="Kharif">Kharif</option>
+                <option className='select-options' onClick={(e)=>{setSeasonSelected(e.target.value)}} value="Zaid">Zaid</option>
               </select>
-              <select name="Satellite-select" onChange={(e) => { setSatellite(e.target.value) }} className='Satellite-select' id="dropdown" placeholder='Select Satellite'>
-                <option className='select-options1' value="" disabled selected hidden>Select Satellite </option>
-                <option className='select-options' value="SENTINEL-2">SENTINEL-2</option>
-                <option className='select-options' value="MODIS">MODIS</option>
+              <select name="Satellite-select" onChange={(e) => { 
+                setSatelliteSelected(e.target.value)
+                setSatellite(e.target.value) }} className='Satellite-select' id="dropdown" value={satelliteSelected} placeholder='Select Satellite'>
+                <option className='select-options1' value="Select Satellite" disabled selected hidden >Select Satellite </option>
+                <option className='select-options' value="SENTINEL-2" onClick={(e)=>{setSatelliteSelected(e.target.value)}}>SENTINEL-2</option>
+                <option className='select-options' value="MODIS" onClick={(e)=>{setSatelliteSelected(e.target.value)}}>MODIS</option>
               </select>
-              <select name="Crop-select" onChange={(e) => { handleCropSelection(e) }} className='Satellite-select' id="dropdown" placeholder='Select Satellite'>
-                <option className='select-options1' value="" disabled selected hidden>Select Crop</option>
-                {season==="Rabi"&&<option className='select-options' value="linseed">linseed</option>}
-                {season==="Rabi"&&<option className='select-options' value="pulses">pulses</option>}
-                {season==="Rabi"&&<option className='select-options' value="corn">corn</option>}
-                {season==="Kharif"&&<option className='select-options' value="pulses">pulses</option>}
-                {season==="Rabi"&&<option className='select-options' value="wheat">wheat</option>}
-                {season==="Kharif"&&<option className='select-options' value="rice">rice</option>}
-                {season==="Kharif"&&<option className='select-options' value="maize">maize</option>}
-                {season==="Kharif"&&<option className='select-options' value="soybean">soybean</option>}
-                {season==="Kharif"&&<option className='select-options' value="ragi">ragi</option>}
-                {season==="Zaid"&& <option className='select-options' value="tomatoes">tomatoes</option>}
-                {season==="Zaid"&& <option className='select-options' value="melon">melon</option>}
+              <select name="Crop-select" onChange={(e) => { 
+                setCropSelected(e.target.value)
+                handleCropSelection(e) }} className='Satellite-select' id="dropdown" value={cropSelected} placeholder='Select Satellite'>
+                <option className='select-options1' value="Select Crop" disabled selected hidden>Select Crop</option>
+                {season==="Rabi"&&<option className='select-options'  onClick={(e)=>{setCropSelected(e.target.value)}} value="linseed">linseed</option>}
+                {season==="Rabi"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}}  value="pulses">pulses</option>}
+                {season==="Rabi"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="corn">corn</option>}
+                {season==="Kharif"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="pulses">pulses</option>}
+                {season==="Rabi"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="wheat">wheat</option>}
+                {season==="Kharif"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="rice">rice</option>}
+                {season==="Kharif"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="maize">maize</option>}
+                {season==="Kharif"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="soybean">soybean</option>}
+                {season==="Kharif"&&<option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="ragi">ragi</option>}
+                {season==="Zaid"&& <option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="tomatoes">tomatoes</option>}
+                {season==="Zaid"&& <option className='select-options' onClick={(e)=>{setCropSelected(e.target.value)}} value="melon">melon</option>}
               </select>
               
 {!showOnlyYearSelector ?
@@ -225,7 +230,11 @@ const LeftSideBar = () => {
                     <option className='select-options' value="2020">2020</option>
                     <option className='select-options' value="2021">2021</option>
                   </select>
-                  <button onClick={()=>setShowOnlyYearSelector(false)}>Reset</button>
+                  <button onClick={()=>{
+                    setCropSelected("Select Crop")
+                    setSatelliteSelected("Select Satellite")
+                    setSeasonSelected("Select Season")
+                    setShowOnlyYearSelector(false)}}>Reset</button>
                   </>
     }
                  
