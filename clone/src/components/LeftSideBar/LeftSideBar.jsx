@@ -11,10 +11,10 @@ import data from '../../roorData'
 const LeftSideBar = () => {
 
   const [sideopen, setSideopen] = useState(false);
-  const [showOnlyYearSelector, setShowOnlyYearSelector] = useState(false)
   const [seasonSelected, setSeasonSelected] = useState("Select Season")
   const [cropSelected, setCropSelected] = useState("Select Crop")
   const [satelliteSelected, setSatelliteSelected] = useState("Select Satellite")
+  const [showOnlyYearSelector, setShowOnlyYearSelector] = useState(false)
   const { cropHighlight, setCropHighlight, seasonHighlight, setSeasonHighlight, allFarmerDetails, season, setSeason, crop, setCrop, ndvi, setAddressQuery, addressQuery, setAddress, setNdvi, setSatellite, leftDet, dates, setDates, param, setParam, setStart, start, end, setEnd, pop, setPop, setSpecDetails, specDetails } = useContext(dataContext)
 
   const geocoderData = async (e) => {
@@ -26,25 +26,27 @@ const LeftSideBar = () => {
     }
   }
   const specificDetails = async () => {
-    if(param!=-1){
-    const spData = await fetch(`https://new-ndvi-default-rtdb.firebaseio.com/${param}.json`)
-    const response = await spData.json()
-    setSpecDetails(response)
-  }
-}
- const openPopup = () => {
-    console.log(specDetails)
-    console.log(specDetails.Crop_Name);
-    if (param != -1) {
-      setPop(true);
-      setParam(-1)
-    } 
+    try {
+      
     
-    else {
-      alert("Please select the required fields")
+    if(param!=null){
+    const spData = await fetch(`https://soassist-54548-default-rtdb.firebaseio.com/${param}.json`)
+    const response = await spData.json()
+    if(!response){
+      alert("Select a available plot num")
+      window.location.reload()
     }
 
+    setSpecDetails(response)
+      
+      setPop(true)
   }
+  
+} catch (error) {
+      
+}
+
+}
   
   const sidemenu = () => {
     setSideopen(!sideopen);
@@ -77,7 +79,7 @@ const LeftSideBar = () => {
 
   const handleSingleDateSelection=(e)=>{
     if(season==='Rabi'){
-      setStart(`${e.target.value}-10-01`)
+      setStart(`${e.target.value}null0-01`)
       setEnd(`${e.target.value}-01-30`)
       console.log("iss bar chala rabi")
     }
@@ -138,13 +140,13 @@ const LeftSideBar = () => {
           </div>
           <div className="infocontainer">
             < div className="areaField">
-      
+  
                 <div className="field">
-                  <div className="title">Area</div>
+                  <div className="title">Khasra Number</div>
                   <div className="value">{
-                    (leftDet.Area ? leftDet.Area :
+                    (param ? param :
                       (
-                        leftDet.id && !leftDet.Area ? "Not Available" : "Not Selected"
+                        param && !param ? "Not Available" : "Not Selected"
                      )
                     )
 
@@ -164,7 +166,7 @@ const LeftSideBar = () => {
 
               <button className="info-btn" onClick={()=>{
                 specificDetails()
-                openPopup()
+
                 }}>More Info</button>
 
             </div>

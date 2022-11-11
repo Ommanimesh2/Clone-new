@@ -1,6 +1,6 @@
 import React from 'react'
 import './map.css'
-import data from '../../roorData';
+import data from '../../Updated_data';
 import dataContext from '../../datacontext';
 import { useEffect,useContext } from 'react'
 import * as L from "leaflet";
@@ -22,18 +22,18 @@ const Map = () => {
     }
     useEffect(() => {
       var map1 = L.DomUtil.get('map'); if(map1 != null){ map1._leaflet_id = null; }
-      if(address.items!=undefined){
-        var southWest = L.latLng(address.items[0].mapView.south,address.items[0].mapView.west)
-        var northEast = L.latLng(address.items[0].mapView.north,address.items[0].mapView.east)
-        var bounds = L.latLngBounds(southWest, northEast);
-      }else{
+      // if(address.items!=undefined){
+      //   var southWest = L.latLng(address.items[0].mapView.south,address.items[0].mapView.west)
+      //   var northEast = L.latLng(address.items[0].mapView.north,address.items[0].mapView.east)
+      //   var bounds = L.latLngBounds(southWest, northEast);
+      // }else{
     
-        var southWest = L.latLng(29.83900608249045,77.90231862375538)
-        var northEast = L.latLng(29.88188113949949,77.95107045481006)
-        var bounds = L.latLngBounds(southWest, northEast);
-      }
+      //   var southWest = L.latLng(29.83900608249045,77.90231862375538)
+      //   var northEast = L.latLng(29.88188113949949,77.95107045481006)
+      //   var bounds = L.latLngBounds(southWest, northEast);
+      // }
         var map = L.map('map',{
-        maxBounds: bounds,   // Then add it here..
+        //maxBounds: bounds,   // Then add it here..
         maxZoom: 19,
         minZoom: 10
     
@@ -80,7 +80,7 @@ const Map = () => {
     
     
       
-      polyline.addTo(map);
+      // polyline.addTo(map);
       // osm.addTo(map);
      
       var myStyle = {

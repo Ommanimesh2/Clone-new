@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import dataContext from './datacontext'
 const ContextProvider = (props) => {
-    const [param,setParam]=useState(-1)
+    const [param,setParam]=useState(null)
     const [ndvi,setNdvi]=useState([])
     const [dates,setDates]=useState([])
     const [start,setStart]=useState("")

@@ -203,7 +203,8 @@ export default function RightSideBar() {
           
         }
         else if(selectIndex=='GNDVI'){
-          const inData=await fetch(`https://gndvi-de6c2-default-rtdb.firebaseio.com/${param}.json`)
+          console.log("current selected index", param);
+          const inData=await fetch(`https://updated-gndvi-default-rtdb.firebaseio.com/${param}.json`)
           const resp=await inData.json()
           resp ? splitKeyValue(resp):alert("no data found")
           setYAxis('GNDVI')
