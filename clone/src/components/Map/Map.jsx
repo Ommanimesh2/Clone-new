@@ -117,14 +117,13 @@ const Map = () => {
       }
       function onEachFeature(features, layer) {
         // does this feature have a property named popupContent?
+        layer.bindTooltip(`${features.properties.id}`, { 'noHide': true });
         layer.on('click',(e)=>{
           setParam(e.target.feature.properties.id)
           setLeftDet(e.target.feature.properties)
           
         })
       }
-     
-    
       
     },[address,cropHighlight,seasonHighlight])
   return (

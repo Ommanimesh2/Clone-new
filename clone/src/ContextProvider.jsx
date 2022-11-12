@@ -7,6 +7,7 @@ const ContextProvider = (props) => {
     const [start,setStart]=useState("")
     const [end,setEnd]=useState("")
     const [pop,setPop]=useState(false)
+    const [instructpop, setInstructpop]=useState(false)
     const [specDetails,setSpecDetails]=useState([])
     const [leftDet,setLeftDet]=useState([])
     const [showGraphData,setShowGraphData]=useState([])
@@ -23,7 +24,7 @@ const ContextProvider = (props) => {
     
       return (
         <div>
-          <dataContext.Provider value={{cropHighlight,setCropHighlight,seasonHighlight,setSeasonHighlight,crop,setCrop,season,setSeason,allFarmerDetails,setAllFarmerDetails,address,setAddress,addressQuery,setAddressQuery,climVars,setClimVars,yAxis,setYAxis,satellite,setSatellite,showGraphData,setShowGraphData,leftDet,setLeftDet,specDetails,setSpecDetails,pop,setPop,ndvi,setNdvi,dates,setDates,param,setParam,start,setStart,end,setEnd}} >
+          <dataContext.Provider value={{cropHighlight,setCropHighlight,seasonHighlight,setSeasonHighlight,crop,setCrop,season,setSeason,allFarmerDetails,setAllFarmerDetails,address,setAddress,addressQuery,setAddressQuery,climVars,setClimVars,yAxis,setYAxis,satellite,setSatellite,showGraphData,setShowGraphData,leftDet,setLeftDet,specDetails,setSpecDetails,pop,setPop,instructpop,setInstructpop,ndvi,setNdvi,dates,setDates,param,setParam,start,setStart,end,setEnd}} >
             {props.children}
           </dataContext.Provider>
         </div>

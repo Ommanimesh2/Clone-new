@@ -1,0 +1,33 @@
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+.modal{
+    width: 100vw;
+    animation: fade-out 2s;
+}
+.overlay {
+    background-color: rgb(235, 216, 216);
+    opacity: 0.5;
+ }
+
+.modal-inner{
+    width:58vw;
+    height:68vh;
+    position:absolute;
+    display:flex;
+    top:16vh;
+    left:28vw;
+    z-index: 1000;
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+    transition: all 1s;
+    -webkit-animation: fadeinout 2s linear forwards;
+    animation: fadeinout 2s linear forwards;
+}
