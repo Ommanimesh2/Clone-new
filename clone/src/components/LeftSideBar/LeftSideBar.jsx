@@ -180,16 +180,15 @@ function markset(){
   
                 <div className="field">
                   <div className="title">Khasra Number</div>
-                  {/* <div className="value">{
-                    (param ? param :
-                      (
-                        param && !param ? "Not Available" : "Not Selected"
-                     )
-                    )
-
-                  }</div> */}
                   <div className="search">
-                    <input type="text" className="value" placeholder='Enter Khasra Number' onChange={(e)=>{
+                   <input type="text" className="value" placeholder={
+                      (param ? param :
+                        (
+                          param && !param ? "Not Available" : "Enter Khasra Number"
+                       )
+                      )
+
+                      } onChange={(e)=>{
                 
                       setKhasra(e.target.value)
                       
