@@ -6,8 +6,9 @@ import { useState } from 'react'
 import { VscMenu } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 import img from '../../Assets/logo1.svg'
+import srch from "../../Assets/search.png"
 import image from '../../Assets/copyright.svg'
-import data from '../../roorData'
+import data from '../../Updated_data'
 const LeftSideBar = () => {
 
   const [sideopen, setSideopen] = useState(false);
@@ -15,7 +16,7 @@ const LeftSideBar = () => {
   const [cropSelected, setCropSelected] = useState("Select Crop")
   const [satelliteSelected, setSatelliteSelected] = useState("Select Satellite")
   const [showOnlyYearSelector, setShowOnlyYearSelector] = useState(false)
-  const { cropHighlight, setCropHighlight, seasonHighlight, setSeasonHighlight, allFarmerDetails, season, setSeason, crop, setCrop, ndvi, setAddressQuery, addressQuery, setAddress, setNdvi, setSatellite, leftDet, dates, setDates, param, setParam, setStart, start, end, setEnd, pop, setPop, setSpecDetails, specDetails } = useContext(dataContext)
+  const { cropHighlight,search,setSearch,centroid,setCentroid,khasra,setKhasra,setCropHighlight, seasonHighlight, setSeasonHighlight, allFarmerDetails, season, setSeason, crop, setCrop, ndvi, setAddressQuery, addressQuery, setAddress, setNdvi, setSatellite, leftDet, dates, setDates, param, setParam, setStart, start, end, setEnd, pop, setPop, setSpecDetails, specDetails } = useContext(dataContext)
 
   const geocoderData = async (e) => {
     if (e.key === 'Enter') {
@@ -25,6 +26,42 @@ const LeftSideBar = () => {
       console.log('do validate')
     }
   }
+  function findCentroid(e){
+    const length=e.length;
+    var latArr=[]
+    var longArr=[]
+    for(let i=0; i<length; i++){
+      latArr.push(e[i][0])
+      longArr.push(e[i][1])
+    }
+    let latCentroid=0
+    let longCentroid=0
+    let centroid=[]
+    for(let i=0; i<length; i++){
+      latCentroid+=latArr[i]
+      longCentroid+=longArr[i]
+      
+    }
+    centroid[1]=latCentroid/length
+    centroid[0]=longCentroid/length
+    return centroid
+  }
+
+function markset(){
+
+    for (let i = 0; i < data.features.length; i++) {
+      console.log(data.features[i].properties.id, parseInt(khasra))
+     if(data.features[i].properties.id==parseInt(khasra))
+     {
+     setCentroid(findCentroid(data.features[i].geometry.coordinates[0]))
+     setSearch(true)
+  }
+  else{
+    console.log("not matching")
+  }
+}
+}
+
   const specificDetails = async () => {
     try {
       
@@ -57,8 +94,8 @@ const LeftSideBar = () => {
     for (let i = 0; i < allFarmerDetails.length; i++) {
       if (allFarmerDetails[i].Crop_Name === query) {
         arr.push(allFarmerDetails[i].id)
-
       }
+     
     }
     var settingArr = []
     for (let i = 0; i < data.features.length; i++) {
@@ -143,24 +180,33 @@ const LeftSideBar = () => {
   
                 <div className="field">
                   <div className="title">Khasra Number</div>
-                  <div className="value">{
+                  {/* <div className="value">{
                     (param ? param :
                       (
                         param && !param ? "Not Available" : "Not Selected"
                      )
                     )
 
-                  }</div>
- 
-  
+                  }</div> */}
+                  <div className="search">
+                    <input type="text" className="value" placeholder='Enter Khasra Number' onChange={(e)=>{
+                
+                      setKhasra(e.target.value)
+                      
+                    }}/>
+                     <button className="srch-btn" onClick={()=>{
+                             markset()
+      
+                      }}><img src={srch}></img></button>
+                </div>
                 </div>
              </div>
     
 
-                  <input className='location-select' type="text" placeholder='Type your Location' onKeyDown={(e) => {
+                  {/* <input className='location-select' type="text" placeholder='Type your Location' onKeyDown={(e) => {
                     setAddressQuery(e.target.value)
                     geocoderData(e)
-                  }} />
+                  }} /> */}
 
             <div className="moreinfo">
 
@@ -232,7 +278,7 @@ const LeftSideBar = () => {
                     <option className='select-options' value="2020">2020</option>
                     <option className='select-options' value="2021">2021</option>
                   </select>
-                  <button onClick={()=>{
+                  <button className="reset-btn" onClick={()=>{
                     setCropSelected("Select Crop")
                     setSatelliteSelected("Select Satellite")
                     setSeasonSelected("Select Season")
@@ -250,6 +296,7 @@ const LeftSideBar = () => {
       }
     </>
   )
+
 }
 
-export default LeftSideBar
+export default LeftSideBar;
