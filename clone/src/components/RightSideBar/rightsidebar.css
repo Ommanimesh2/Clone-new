@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 76vw;
     height: 50vh;
 }
 .ig {
@@ -55,4 +55,15 @@ margin-left: 3.5vw;
     .plot-btn:hover{
         background-color: #1a72e4;
         font-weight: bolder;
+    }
+    .i-btn{
+        margin-top: 24vh;
+        position: fixed;
+        right: -20px;
+    }
+    .i-btn img{
+        width: 60px;
+    }
+    .i-btn img :hover{
+    cursor: pointer;
     }

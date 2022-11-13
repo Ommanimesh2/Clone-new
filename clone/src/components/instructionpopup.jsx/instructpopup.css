@@ -1,4 +1,4 @@
-.modal, .overlay {
+.modalinstruct, .overlayinstruct {
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -6,28 +6,133 @@
     right: 0;
     bottom: 0;
     position: fixed;
+
 }
-.modal{
+.modalinstruct{
     width: 100vw;
     animation: fade-out 2s;
 }
-.overlay {
-    background-color: rgb(235, 216, 216);
-    opacity: 0.5;
+.overlayinstruct {
+    background-color: rgb(17, 16, 16);
+    opacity: 0.95;
  }
 
-.modal-inner{
-    width:58vw;
-    height:68vh;
+.modal-innerinstruct{
+    width:45vw;
+    height:74vh;
     position:absolute;
-    display:flex;
-    top:16vh;
-    left:28vw;
+    top:13vh;
+    left:27.5vw;
     z-index: 1000;
-    flex-direction: column;
-    background: white;
+    background: #F7F7F7;;
     border-radius: 8px;
     transition: all 1s;
     -webkit-animation: fadeinout 2s linear forwards;
     animation: fadeinout 2s linear forwards;
 }
+.poptop{
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+}
+.top-heading {
+    margin-top: 0;
+    font-family: 'Cera Pro';
+font-style: normal;
+    width: 45vw;
+    text-shadow: 4px 4px 4px rgba(79, 79, 79, 0.25);
+align-items: center;
+align-content: center;
+text-align: center;
+}
+.top-heading h1{
+font-family: 'Cera Pro';
+font-style: normal;
+font-weight: 500;
+font-size: 42px;
+color: #667085;
+text-shadow: 4px 4px 4px rgba(79, 79, 79, 0.25);
+}
+.iconclose{
+    color: black;
+margin-left:-3vw;
+margin-top: 4.5vh;
+height: 4vh;
+width: 2.5vw;
+}
+.iconclose :hover{
+color: red;
+}
+.modal-innerinstruct img{
+    margin-top: -4vh;
+    margin-left: -3vw;
+    height: 55vh;
+    width: 60vw;
+}
+.popup-icon {
+  margin-top: -3vh;
+  display: flex;
+  margin-left: 34vw;
+}
+.next-icon img{
+    height: 5vh;
+    width: 5.5vw;
+  margin-left: 1.5vw;
+}
+.instructions-container {
+    background-color:#FFFFFF;
+width: 35vw;
+height: 44vh;
+margin-left: 5vw;
+border: 1px solid #C5C5C5;
+border-radius: 8px;
+box-sizing: border-box;
+color: #667085;
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+overflow-y: scroll;
+}
+.popup-iconstarted{
+    margin-top: 6vh;
+}
+.instructions {
+    width: 33vw;
+}
+.instructions ol li{
+    margin-top: 3vh;
+}
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    height: 150px;
+    width: 6px;
+    background: #C4C7CD;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #667085;
+    border-radius: 4px;
+    height:18.31px;
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  .popup-iconstarted{
+    margin-left: 38vw;
+  }
+  .popup-iconstarted img{
+    height: 5vh;
+    width: 5.5vw;
+  }
+  .copyright img{
+    margin-top: 6.7vh;
+    width: 19vw;
+    color: black;
+
+  }

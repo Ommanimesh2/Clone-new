@@ -1,16 +1,17 @@
 import React from 'react'
 import "./rightsidebar.css"
 import { useState } from 'react'
+import ibtn from '../../Assets/i-btn.svg';
 import dataContext from '../../datacontext';
 import { useContext } from 'react';
-import {
+import Tooltip from "rc-tooltip";
+import{
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
   Title,
-  Tooltip,
   Legend,
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
@@ -23,7 +24,7 @@ export default function RightSideBar() {
         PointElement,
         LineElement,
         Title,
-        Tooltip,
+
         Legend
       );
       const options = {
@@ -250,7 +251,12 @@ export default function RightSideBar() {
         ]
     
       }
-   
+      const {instructpop, setInstructpop}= useContext(dataContext)
+      const {welcome, setWelcome} = useContext(dataContext)
+      const showinstruction=()=>{
+        setInstructpop(true)
+        setWelcome(false)
+      }
   return (
     <div className='graph-logo'>
 {satellite=='SENTINEL-2' ? <div className="ig">
@@ -281,17 +287,23 @@ export default function RightSideBar() {
                
         
              }}>Plot</button>
-</div> :<div className='nodata'><p>Select the Crop Field and the time series for data analysis</p></div>}
+</div> :<div className='nodata'><p>Select the Crop Field and the time series for data analysis</p>
+
+</div>
+
+}
 
       {ndvi.length>2 
       ? 
     <div className='graphcontainer'>
      <Line style={{height:"200px",width:"1200px"}} options={options} data={datad} />
-      
+  
     </div>
       :
       <> </>}
-      
+         <div className="i-btn">
+  <img src={ibtn} alt="" onClick={showinstruction} />
+</div>
     </div>
   )
 }
