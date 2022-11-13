@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import dataContext from './datacontext'
 const ContextProvider = (props) => {
+    const [centroid,setCentroid]=useState([])
+    const [search,setSearch]=useState(false)
+    const [khasra,setKhasra]=useState()
+    const [dates,setDates]=useState([])
     const [param,setParam]=useState(null)
     const [ndvi,setNdvi]=useState([])
     const [dates,setDates]=useState([])
@@ -25,7 +29,7 @@ const ContextProvider = (props) => {
     
       return (
         <div>
-          <dataContext.Provider value={{cropHighlight,setCropHighlight,seasonHighlight,setSeasonHighlight,crop,setCrop,season,setSeason,allFarmerDetails,setAllFarmerDetails,address,setAddress,addressQuery,setAddressQuery,climVars,setClimVars,yAxis,setYAxis,satellite,setSatellite,showGraphData,setShowGraphData,leftDet,setLeftDet,specDetails,setSpecDetails,pop,setPop,welcome,setWelcome,instructpop,setInstructpop,ndvi,setNdvi,dates,setDates,param,setParam,start,setStart,end,setEnd}} >
+          <dataContext.Provider value={{centroid,setCentroid,search,khasra,setKhasra,setSearch,cropHighlight,setCropHighlight,seasonHighlight,setSeasonHighlight,crop,setCrop,season,setSeason,allFarmerDetails,setAllFarmerDetails,address,setAddress,addressQuery,setAddressQuery,climVars,setClimVars,yAxis,setYAxis,satellite,setSatellite,showGraphData,setShowGraphData,leftDet,setLeftDet,specDetails,setSpecDetails,pop,setPop,welcome,setWelcome,instructpop,setInstructpop,ndvi,setNdvi,dates,setDates,param,setParam,start,setStart,end,setEnd}} >
             {props.children}
           </dataContext.Provider>
         </div>
