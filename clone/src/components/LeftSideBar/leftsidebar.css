@@ -53,10 +53,10 @@ body{
         font-size: 24px;
         padding-bottom: 10px; 
         font-weight: 500;
+        margin-left: 1.6vw;
     }
     .value{
         /* border: 2px solid black; */
-        background-color: #1a242c;
         padding: 7px;
   
     }
@@ -90,11 +90,13 @@ body{
         padding-top: 2vh;
     }
     .Satellite-select{
+        margin: 0 2vh;
+        margin-left: 0.4vw;
+        width: 76%;
         text-align: center;
         background-color: azure;
         height: 4vh;
         font-size: 2vh;
-        width: 100%;
         margin-bottom: 2vh;
         border-radius: 0;
     }
@@ -112,7 +114,8 @@ body{
     .info-btn{
         color: azure;
         margin: 0 2vh;
-        width: 90%;
+        margin-left: 2.8vw;
+        width: 70%;
         height: 5vh;
         background-color: #2984FF;
         cursor: pointer;
@@ -133,13 +136,15 @@ body{
         color: #273037;
     }
     .dateinput{
+        margin: 0 2vh;
+        margin-left: 0.4vw;
+        width: 76%;
         text-align: center;
         background-color: azure;
         height: 4vh;
         font-size: 2vh;
         margin-top: 0.8vh;
         margin-bottom: 1vh;
-        width: 100%;
         color: #273037;
     }
     .update-btn{
@@ -191,4 +196,29 @@ body{
     position: absolute;
 bottom: 0;
 left: 0;
+}
+.search{
+    display:flex;
+    margin-left: 1.2vw;
+    align-items: center;
+}
+.srch-btn{
+    width:2.5vw;
+    height:4.7vh;
+    background-color:#2984FF;
+}
+.srch-btn img{
+    width:1.5vw;
+
+}
+.reset-btn{
+        color: azure;
+        margin-left: 0vw;
+        width: 30%;
+        height: 5vh;
+        background-color: #2984FF;
+        cursor: pointer;
+        border-radius: 0.6vh;
+        font-size: 18px;  
+        margin-top: -0.5vh;
 }
