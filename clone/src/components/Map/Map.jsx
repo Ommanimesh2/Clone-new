@@ -11,7 +11,7 @@ const Map = () => {
       const style2={
         display:'block'
       }
-      const {cropHighlight,setCropHighlight,seasonHighlight,setSeasonHighlight,param,allFarmerDetails,setAllFarmerDetails,setParam,address,setAddress,pop,setPop,setLeftDet}=useContext(dataContext)
+      const {cropHighlight,search,setSearch,centroid,setCentroid,khasra,setKhasra,setCropHighlight,seasonHighlight,setSeasonHighlight,param,allFarmerDetails,setAllFarmerDetails,setParam,address,setAddress,pop,setPop,setLeftDet}=useContext(dataContext)
       useEffect(()=>{
          handleAllFarmData()
     },[])
@@ -19,6 +19,26 @@ const Map = () => {
       const data=await fetch('https://new-ndvi-default-rtdb.firebaseio.com/.json')
       const resp=await data.json();
       setAllFarmerDetails(resp)
+    }
+    function findCentroid(e){
+      const length=e.length;
+      var latArr=[]
+      var longArr=[]
+      for(let i=0; i<length; i++){
+        latArr.push(e[i][0])
+        longArr.push(e[i][1])
+      }
+      let latCentroid=0
+      let longCentroid=0
+      let centroid=[]
+      for(let i=0; i<length; i++){
+        latCentroid+=latArr[i]
+        longCentroid+=longArr[i]
+        
+      }
+      centroid[1]=latCentroid/length
+      centroid[0]=longCentroid/length
+      return centroid
     }
     useEffect(() => {
       var map1 = L.DomUtil.get('map'); if(map1 != null){ map1._leaflet_id = null; }
@@ -58,12 +78,15 @@ const Map = () => {
         popupAnchor: [1, -34],
         shadowSize: [41, 41]
       });
-      var marker = L.marker([29.8665,77.9060], {icon: greenIcon},{
-        draggable: true
-      }).addTo(map);
-      marker.on('dragend', function (e) {
-        updateLatLng(marker.getLatLng().lat, marker.getLatLng().lng);
-      });
+
+         var marker = L.marker([29.8665,77.9060], {icon: greenIcon},{
+          draggable: true
+        }).addTo(map);
+        marker.on('dragend', function (e) {
+          updateLatLng(marker.getLatLng().lat, marker.getLatLng().lng);
+        });
+      
+  
       
       map.on('click', function (e) {
         marker.setLatLng(e.latlng);
@@ -115,7 +138,28 @@ const Map = () => {
         }).addTo(map);
     
       }
+      console.log(search)
+      if(search)
+      {
+       marker.setLatLng(centroid)
+
+      }
+   
       function onEachFeature(features, layer) {
+        
+        // if(features.properties.id===param)
+        // {
+        //  console.log(features.geometry.coordinates[0])
+        // }
+        
+      //  else if(features.properties.id===param){
+      //   marker = L.marker(findCentroid(features.geometry.coordinates[0]), {icon: greenIcon},{
+      //    draggable: true
+      //  }).addTo(map);
+      //  marker.on('dragend', function (e) {
+      //    updateLatLng(marker.getLatLng().lat, marker.getLatLng().lng);
+      //  });
+    
         // does this feature have a property named popupContent?
         layer.bindTooltip(`${features.properties.id}`, { 'noHide': true });
         layer.on('click',(e)=>{
@@ -125,7 +169,7 @@ const Map = () => {
         })
       }
       
-    },[address,cropHighlight,seasonHighlight])
+    },[address,cropHighlight,seasonHighlight,search,centroid])
   return (
     <div style={pop ? style1 :style2} className='map' id="map">
       
