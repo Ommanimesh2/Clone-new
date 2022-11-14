@@ -7,7 +7,7 @@ const ContextProvider = (props) => {
     const [dates,setDates]=useState([])
     const [param,setParam]=useState(null)
     const [ndvi,setNdvi]=useState([])
-    const [dates,setDates]=useState([])
+    // const [dates,setDates]=useState([])
     const [start,setStart]=useState("")
     const [end,setEnd]=useState("")
     const [pop,setPop]=useState(false)

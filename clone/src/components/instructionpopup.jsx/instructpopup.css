@@ -36,7 +36,7 @@
     flex-direction: row;
 }
 .top-heading {
-    margin-top: 0;
+    margin-top: 1vh;
     font-family: 'Cera Pro';
 font-style: normal;
     width: 45vw;
@@ -44,6 +44,9 @@ font-style: normal;
 align-items: center;
 align-content: center;
 text-align: center;
+}
+.frame-img {
+  height: 50vh;
 }
 .top-heading h1{
 font-family: 'Cera Pro';
@@ -54,14 +57,16 @@ color: #667085;
 text-shadow: 4px 4px 4px rgba(79, 79, 79, 0.25);
 }
 .iconclose{
-    color: black;
+    color: rgb(188, 181, 181);
+   border-radius: 10px;
 margin-left:-3vw;
-margin-top: 4.5vh;
+margin-top: 1vh;
 height: 4vh;
 width: 2.5vw;
+
 }
-.iconclose :hover{
-color: red;
+.iconclose:hover{
+color:black;
 }
 .modal-innerinstruct img{
     margin-top: -4vh;
@@ -78,6 +83,7 @@ color: red;
     height: 5vh;
     width: 5.5vw;
   margin-left: 1.5vw;
+  margin-top: 0;
 }
 .instructions-container {
     background-color:#FFFFFF;
@@ -125,6 +131,7 @@ overflow-y: scroll;
   }
   .popup-iconstarted{
     margin-left: 38vw;
+    height: 2.5vh;
   }
   .popup-iconstarted img{
     height: 5vh;
@@ -135,4 +142,13 @@ overflow-y: scroll;
     width: 19vw;
     color: black;
 
+  }
+  .tagline {
+    color: black;
+    width: 100%;
+    text-align: center;
+    font-family: 'inter';
+font-style: normal;
+font-weight: 300;
+font-size: 1.5rem;
   }

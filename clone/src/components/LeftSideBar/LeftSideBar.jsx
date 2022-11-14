@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import dataContext from '../../datacontext'
 import './leftsidebar.css'
 import Hamburger from '../Hamburger/Hamburger'
@@ -17,7 +17,7 @@ const LeftSideBar = () => {
   const [satelliteSelected, setSatelliteSelected] = useState("Select Satellite")
   const [showOnlyYearSelector, setShowOnlyYearSelector] = useState(false)
   const { cropHighlight,search,setSearch,centroid,setCentroid,khasra,setKhasra,setCropHighlight, seasonHighlight, setSeasonHighlight, allFarmerDetails, season, setSeason, crop, setCrop, ndvi, setAddressQuery, addressQuery, setAddress, setNdvi, setSatellite, leftDet, dates, setDates, param, setParam, setStart, start, end, setEnd, pop, setPop, setSpecDetails, specDetails } = useContext(dataContext)
-
+  const [track,setTrack]=useState()
   const geocoderData = async (e) => {
     if (e.key === 'Enter') {
       const data = await fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${addressQuery}&apiKey=DBqoNTB1sP3HLJ9T5QDJgbPIv8lZA_0W1cG-Je0wJqo`)
@@ -48,7 +48,7 @@ const LeftSideBar = () => {
   }
 
 function markset(){
-
+    setParam(khasra)
     for (let i = 0; i < data.features.length; i++) {
       console.log(data.features[i].properties.id, parseInt(khasra))
      if(data.features[i].properties.id==parseInt(khasra))
@@ -155,7 +155,9 @@ function markset(){
     setSeasonHighlight(settingArrNew[0])
 
   }
-
+useEffect(()=>{
+document.getElementById('khasraSearch').value=param
+},[param])
   return (
     <>
       {sideopen ? <>
@@ -181,20 +183,19 @@ function markset(){
                 <div className="field">
                   <div className="title">Khasra Number</div>
                   <div className="search">
-                   <input type="text" className="value" placeholder={
+                   <input type="text" className="value" id='khasraSearch' placeholder={
                       (param ? param :
                         (
                           param && !param ? "Not Available" : "Enter Khasra Number"
                        )
                       )
-
                       } onChange={(e)=>{
-                
-                      setKhasra(e.target.value)
-                      
-                    }}/>
+                        setKhasra(e.target.value)
+                      }
+                    }/>
                      <button className="srch-btn" onClick={()=>{
                              markset()
+                           
       
                       }}><img src={srch}></img></button>
                 </div>
@@ -281,6 +282,8 @@ function markset(){
                     setCropSelected("Select Crop")
                     setSatelliteSelected("Select Satellite")
                     setSeasonSelected("Select Season")
+                    setCropHighlight([])
+                    setSeasonHighlight([])
                     setShowOnlyYearSelector(false)}}>Reset</button>
                   </>
     }
