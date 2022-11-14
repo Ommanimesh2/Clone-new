@@ -40,7 +40,7 @@ setWelcome(false);
        
         {welcome ?
         <>
-      <img src={popimage} alt="" />  
+      <div className="frame-img"> <img src={popimage} alt="" />  </div> 
       <div className="popup-icon">
       <div className="next-icon"> <img src={previmg} alt="" onClick={nextstart}/></div>
       </div>
@@ -71,6 +71,8 @@ Sentinel 2 or MODiS. </li>
        </div>
       </>
       }
+  <div className="tagline">sowing the seeds for near future</div>
+          </div>
           </div>
   
     </div>
