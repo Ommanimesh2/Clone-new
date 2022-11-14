@@ -63,6 +63,9 @@ width: 2.5vw;
 .iconclose :hover{
 color: red;
 }
+.frame-img {
+  height: 50vh;
+}
 .modal-innerinstruct img{
     margin-top: -4vh;
     margin-left: -3vw;
@@ -77,6 +80,7 @@ color: red;
 .next-icon img{
     height: 5vh;
     width: 5.5vw;
+    margin-top: 0vh;
   margin-left: 1.5vw;
 }
 .instructions-container {
@@ -135,4 +139,13 @@ overflow-y: scroll;
     width: 19vw;
     color: black;
 
+  }
+  .tagline {
+    color: black;
+    width: 100%;
+    text-align: center;
+    font-family: 'inter';
+font-style: normal;
+font-weight: 300;
+font-size: 1.5rem;
   }
