@@ -4,7 +4,6 @@ const ContextProvider = (props) => {
     const [centroid,setCentroid]=useState([])
     const [search,setSearch]=useState(false)
     const [khasra,setKhasra]=useState()
-    const [dates,setDates]=useState([])
     const [param,setParam]=useState(null)
     const [ndvi,setNdvi]=useState([])
     const [dates,setDates]=useState([])

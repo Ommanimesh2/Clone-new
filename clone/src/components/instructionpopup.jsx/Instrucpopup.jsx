@@ -73,7 +73,7 @@ Sentinel 2 or MODiS. </li>
       }
   <div className="tagline">sowing the seeds for near future</div>
           </div>
-          </div>
+  
   
     </div>
     
