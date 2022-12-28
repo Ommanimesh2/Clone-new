@@ -5,7 +5,7 @@ import dataContext from '../../datacontext';
 import { VscChromeClose } from "react-icons/vsc";
 const Popup = () => {
     const {pop,setPop,param,specDetails}=useContext(dataContext)
-     return (
+    return (
 
     <div className="modal">
     <div className="overlay"></div>
@@ -23,6 +23,10 @@ const Popup = () => {
                 <div className="detail">
                    <div className="option">Khasra Number</div>
                    <div className="answer">{param ? param:"Nil"}</div>
+               </div>
+                <div className="detail">
+                   <div className="option">Picutre taken </div>
+                   <div className="answer">{JSON.parse(specDetails.all_crop_images).date_ ?JSON.parse(specDetails.all_crop_images).date_:"Nil"}</div>
                </div>
                 <div className="detail">
                    <div className="option">Aadhar Number</div>
